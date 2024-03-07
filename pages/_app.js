@@ -1,6 +1,6 @@
-import '@/styles/globals.css'
+import '../styles/globals.css'
 import { useRouter } from 'next/router'
-import Navbar from '@/components/Navbar'
+import Navbar from '../components/Navbar'
 import { useServiceWorker } from '@edgio/react'
 
 const MyApp = ({ Component, pageProps }) => {

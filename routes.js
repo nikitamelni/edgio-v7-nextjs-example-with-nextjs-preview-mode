@@ -19,3 +19,17 @@ export default new Router()
     },
     origin: { set_origin: 'api' },
   })
+  .match(
+    {
+      cookies: {
+        __prerender_bypass: /.*/g,
+        __next_preview_data: /.*/g,
+      },
+    },
+    {
+      caching: {
+        bypass_cache: true,
+        bypass_client_cache: true,
+      },
+    }
+  );

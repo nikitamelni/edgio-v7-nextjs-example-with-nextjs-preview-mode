@@ -1,6 +1,6 @@
 import { StarIcon } from '@heroicons/react/solid'
 import { HeartIcon, StarIcon as StarIconOutline } from '@heroicons/react/outline'
-import { getOrigin } from '@/lib/helper'
+import { getOrigin } from '../../lib/helper'
 import Image from 'next/image'
 const Product = ({ data }) => {
   return (

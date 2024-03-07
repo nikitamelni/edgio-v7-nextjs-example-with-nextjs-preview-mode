@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
-import Sidebar from '@/components/Sidebar'
-import ProductPreview from '@/components/ProductPreview'
-import { filterProducts, getOrigin } from '@/lib/helper'
+import Sidebar from '../components/Sidebar'
+import ProductPreview from '../components/ProductPreview'
+import { filterProducts, getOrigin } from '../lib/helper'
 
 const Search = ({ data }) => {
   const router = useRouter()
