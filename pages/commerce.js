@@ -3,12 +3,12 @@ import Sidebar from '../components/Sidebar'
 import ProductPreview from '../components/ProductPreview'
 import { filterProducts, getOrigin } from '../lib/helper'
 
-const Search = ({ data, isPreview }) => {
+const Search = ({ data, isPreview, previewData }) => {
   const router = useRouter()
 
   return (
     <div className="flex-col items-center justify-start">
-      {isPreview && <h1 className="text-3xl font-bold text-white">Preview Mode</h1>}
+      {isPreview && <h1 className="text-3xl font-bold text-white">Preview Mode, value is {previewData?.customValue}</h1>}
       <div className="flex w-full flex-row items-start px-5">
         <div className="flex min-w-[200px] flex-col pt-5">
           <Sidebar />
@@ -28,7 +28,7 @@ const Search = ({ data, isPreview }) => {
 
 export default Search
 
-export async function getServerSideProps({ req, query }) {
+export async function getServerSideProps({ req, query, preview, previewData }) {
   console.log('fetching', `${getOrigin(req)}/edgio-api/${query.name ? `categories/${query.name}` : 'products/all'}`)
   const resp = await fetch(`${getOrigin(req)}/edgio-api/${query.name ? `categories/${query.name}` : 'products/all'}`)
   if (!resp.ok) {
@@ -41,6 +41,6 @@ export async function getServerSideProps({ req, query }) {
     data = data['items']
   }
   return {
-    props: { data, isPreview: Boolean(preview) },
+    props: { data, isPreview: Boolean(preview), previewData: previewData },
   }
 }
