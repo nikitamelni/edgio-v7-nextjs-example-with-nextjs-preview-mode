@@ -3,11 +3,12 @@ import Sidebar from '../components/Sidebar'
 import ProductPreview from '../components/ProductPreview'
 import { filterProducts, getOrigin } from '../lib/helper'
 
-const Search = ({ data }) => {
+const Search = ({ data, isPreview }) => {
   const router = useRouter()
 
   return (
     <div className="flex-col items-center justify-start">
+      {isPreview && <h1 className="text-3xl font-bold text-white">Preview Mode</h1>}
       <div className="flex w-full flex-row items-start px-5">
         <div className="flex min-w-[200px] flex-col pt-5">
           <Sidebar />
@@ -40,6 +41,6 @@ export async function getServerSideProps({ req, query }) {
     data = data['items']
   }
   return {
-    props: { data },
+    props: { data, isPreview: Boolean(preview) },
   }
 }
